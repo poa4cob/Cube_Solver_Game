@@ -13,6 +13,13 @@ npm run dev
 
 Open the local URL printed in the terminal, usually `http://localhost:5173/`.
 
+## Deploy
+
+The GitHub Actions workflow builds and deploys the app to GitHub Pages whenever
+you push to `main`. In the repository settings, set **Pages → Build and
+deployment → Source** to **GitHub Actions**. After the workflow completes, the
+published site URL appears in the workflow's deployment environment.
+
 ## Play
 
 - Drag the cube to change the viewing angle.
