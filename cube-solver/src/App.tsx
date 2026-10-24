@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { experimentalSolve3x3x3IgnoringCenters } from 'cubing/search'
+import { experimentalSolve3x3x3IgnoringCenters, setSearchDebug } from 'cubing/search'
 import { randomScrambleForEvent } from 'cubing/scramble'
 import { TwistyPlayer } from 'cubing/twisty'
 import { ArrowRight, Check, CircleHelp, RotateCcw, Shuffle, Sparkles } from 'lucide-react'
 import './App.css'
+
+setSearchDebug({
+  allowLegacyPatternsForWorkerInstantiation: true,
+  prioritizeEsbuildWorkaroundForWorkerInstantiation: true,
+})
 
 function App() {
   const stageRef = useRef<HTMLDivElement>(null)

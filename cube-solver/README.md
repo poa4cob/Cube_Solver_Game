@@ -16,9 +16,20 @@ Open the local URL printed in the terminal, usually `http://localhost:5173/`.
 ## Deploy
 
 The GitHub Actions workflow builds and deploys the app to GitHub Pages whenever
-you push to `main`. In the repository settings, set **Pages → Build and
-deployment → Source** to **GitHub Actions**. After the workflow completes, the
-published site URL appears in the workflow's deployment environment.
+you push to `main`. Before the first deployment, open the repository's
+**Settings → Pages** and set **Build and deployment → Source** to **GitHub
+Actions**.
+
+To open the running app after a deployment:
+
+1. Open the repository on GitHub and select **Actions**.
+2. Select the completed **Build and deploy to GitHub Pages** workflow run for
+   your push.
+3. On the run's summary page, select the **github-pages** deployment link (or
+   the **github-pages** environment). This opens the published app.
+
+You can also find the URL under **Settings → Pages**. The deployment may take a
+few minutes to finish after pushing to `main`.
 
 ## Play
 
