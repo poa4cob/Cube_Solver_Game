@@ -53,7 +53,8 @@ function App() {
       player.alg = ''
       setScramble(nextScramble.toString())
       setStatus('Scrambled and ready')
-    } catch {
+    } catch (error) {
+      console.error('Could not create a scramble:', error)
       setStatus('Could not create a scramble. Try again.')
     } finally {
       setBusy(false)
@@ -72,7 +73,8 @@ function App() {
       const nextSolution = alg.toString().trim().split(/\s+/).filter(Boolean)
       setSolution(nextSolution)
       setStatus(nextSolution.length ? `${nextSolution.length} moves to solve` : 'Already solved')
-    } catch {
+    } catch (error) {
+      console.error('Could not solve this position:', error)
       setStatus('Could not solve this position. Try resetting the cube.')
     } finally {
       setBusy(false)
