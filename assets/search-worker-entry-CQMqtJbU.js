@@ -1,0 +1,1 @@
+import{o as e,s as t}from"./cubing-CfrcriI1.js";e.expose&&t(()=>import(`./cubing-CfrcriI1.js`).then(e=>e.t).then(()=>{globalThis.postMessage?globalThis.postMessage(`comlink-exposed`):globalThis.process.getBuiltinModule(`node:worker_threads`).parentPort?.postMessage(`comlink-exposed`)}),[]);var n=import.meta.url;export{n as WORKER_ENTRY_FILE_URL};
