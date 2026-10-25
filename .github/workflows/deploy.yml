@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "*"
   release:
     types:
       - published
@@ -39,9 +41,9 @@ jobs:
       - name: Build app
         working-directory: cube-solver
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || (github.ref_type == 'tag' && github.ref_name) || '' }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
+          if [[ -n "$RELEASE_TAG" ]]; then
             base="/${GITHUB_REPOSITORY#*/}/releases/${RELEASE_TAG}/"
           else
             base="/${GITHUB_REPOSITORY#*/}/"
@@ -79,7 +81,7 @@ jobs:
 
       - name: Prepare retained Pages site
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || (github.ref_type == 'tag' && github.ref_name) || '' }}
         run: |
           set -euo pipefail
 
@@ -99,7 +101,7 @@ jobs:
             exit "$ref_status"
           fi
 
-          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
+          if [[ -n "$RELEASE_TAG" ]]; then
             mkdir -p "site/releases/$RELEASE_TAG"
             find "site/releases/$RELEASE_TAG" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
             cp -a dist/. "site/releases/$RELEASE_TAG/"
